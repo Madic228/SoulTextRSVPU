@@ -1,0 +1,74 @@
+.main-page {
+    background: url('https://i.pinimg.com/originals/7b/2e/f4/7b2ef4133654cb9e3a53faaacebe0c6c.jpg') no-repeat center center fixed;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 500px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    opacity: 0.90;
+}
+textarea {
+    width: 100%;
+    resize: vertical;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+input[type="file"] {
+    margin-bottom: 10px;
+}
+.scroll-box {
+    width: 100%;
+    height: 120px;
+    overflow-y: auto;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    border-radius: 4px;
+    white-space: pre-wrap;
+}
+button {
+    padding: 10px 18px;
+    font-size: 16px;
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background: #1565c0;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background: #fff;
+    margin: 10% auto;
+    padding: 24px;
+    border-radius: 8px;
+    width: 320px;
+    text-align: center;
+    position: relative;
+}
+.close {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    font-size: 22px;
+    cursor: pointer;
+}
