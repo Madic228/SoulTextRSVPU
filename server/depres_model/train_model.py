@@ -82,7 +82,7 @@ def create_model(vocab_size, max_length):
 def train_model():
     # Загрузка данных
     print("Загрузка данных...")
-    df = load_and_prepare_data("../fix_depres_model/RU_dataset_normalized.json")
+    df = load_and_prepare_data("RU_dataset_normalized.json")
 
     # Разделение на train и validation
     X_train, X_val, y_train, y_val = train_test_split(
