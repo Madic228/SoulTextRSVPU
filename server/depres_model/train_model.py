@@ -11,6 +11,16 @@ from tensorflow.keras.layers import Dense, Embedding, LSTM, Bidirectional, Dropo
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, Callback
 import matplotlib.pyplot as plt
 
+# Настройка GPU
+physical_devices = tf.config.list_physical_devices('GPU')
+if len(physical_devices) > 0:
+    tf.config.set_visible_devices(physical_devices[0], 'GPU')
+    print("Используется GPU")
+    # Динамическое выделение памяти GPU
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
+else:
+    print("GPU не найден, используется CPU")
+
 class F1ScoreCallback(Callback):
     def __init__(self, validation_data):
         super(F1ScoreCallback, self).__init__()
@@ -28,10 +38,10 @@ class F1ScoreCallback(Callback):
             self.best_weights = self.model.get_weights()
             print(f"\nНовый лучший F1-score: {val_f1:.4f}")
 
-            # Сохраняем модель, если F1-score >= 0.9
+            # Сохраняем веса модели, если F1-score >= 0.9
             if val_f1 >= 0.9:
-                self.model.save("best_model.keras")
-                print("Модель сохранена (F1-score >= 0.9)")
+                self.model.save_weights("best_model_weights.h5")
+                print("Веса модели сохранены (F1-score >= 0.9)")
 
 def load_and_prepare_data(file_path):
     """Загрузка и подготовка данных"""
@@ -72,7 +82,7 @@ def create_model(vocab_size, max_length):
 def train_model():
     # Загрузка данных
     print("Загрузка данных...")
-    df = load_and_prepare_data("RU_dataset_normalized.json")
+    df = load_and_prepare_data("../fix_depres_model/RU_dataset_normalized.json")
 
     # Разделение на train и validation
     X_train, X_val, y_train, y_val = train_test_split(
@@ -107,7 +117,7 @@ def train_model():
 
     # Callbacks
     early_stopping = EarlyStopping(
-        monitor='val_loss',  # Изменено с val_f1_score на val_loss
+        monitor='val_loss',
         patience=5,
         restore_best_weights=True,
         mode='min'
@@ -119,7 +129,7 @@ def train_model():
     print("Обучение модели...")
     history = model.fit(
         X_train_padded, y_train,
-        epochs=50,
+        epochs=15,
         batch_size=32,
         validation_data=(X_val_padded, y_val),
         callbacks=[early_stopping, f1_callback]
@@ -133,10 +143,10 @@ def train_model():
     print("\nПолный отчет о классификации:")
     print(classification_report(y_val, y_pred))
 
-    # Сохранение модели
+    # Сохранение весов модели
     if f1 >= 0.9:
-        model.save("depression_detector.keras")
-        print("\nМодель сохранена как 'depression_detector.keras' (F1-score >= 0.9)")
+        model.save_weights("depression_detector_weights.h5")
+        print("\nВеса модели сохранены как 'depression_detector_weights.h5' (F1-score >= 0.9)")
     else:
         print("\nМодель не достигла требуемого F1-score >= 0.9")
 

@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-import os
-from depres_model.predict import load_model_and_tokenizer, predict_text
+from server.depres_model.predict import load_model_and_tokenizer, predict_text
 
 app = Flask(__name__)
 
