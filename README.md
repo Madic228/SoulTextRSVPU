@@ -62,6 +62,31 @@ python server/app.py
 
 ---
 
+## Быстрый старт через Docker
+
+### 1. Соберите Docker-образ
+
+```sh
+docker build -t soultextrsvpu .
+```
+
+### 2. Запустите контейнер
+
+```sh
+docker run -p 5000:5000 soultextrsvpu
+```
+
+### 3. Откройте сайт
+
+Перейдите в браузере по адресу: [http://localhost:5000](http://localhost:5000)
+
+---
+
+**Примечание:**  
+Перед сборкой Docker-образа убедитесь, что в проекте есть файл `requirements.txt` и все необходимые веса/токенизатор в папке `server/depres_model/`.
+
+---
+
 ## Структура проекта
 
 ```
@@ -72,6 +97,7 @@ server/
 │   ├── predict.py              # Загрузка модели и предсказание
 │   ├── train_model.py          # Обучение модели
 │   ├── normalize_dataset.py    # Очистка и нормализация датасета
+│   ├── RU_dataset_normalized.json  # Пример нормализованного датасета
 │   ├── analyze_dataset.py      # Анализ датасета
 │   ├── depression_detector_weights.h5  # Веса модели
 │   └── tokenizer.pkl           # Токенизатор
@@ -81,10 +107,10 @@ server/
 │   ├── script.js               # JS-логика
 │   └── cross-small-svgrepo-com.svg # SVG для кнопки отмены
 │
-├── templates/
-│   └── main.html               # Основная страница
-│
-└── RU_dataset_normalized.json  # Пример нормализованного датасета
+└── templates/
+    └── main.html               # Основная страница
+
+
 ```
 
 ---
@@ -134,4 +160,6 @@ MIT License
 
 ## Авторы
 
-- [Ваше имя или ник](https://github.com/yourusername)
+- Madic228      (https://github.com/Madic228)
+- Egor-Ulanov   (https://github.com/Egor-Ulanov)
+- Cripochec     (https://github.com/Cripochec)
