@@ -134,7 +134,9 @@ server/
 
 ## Обучение модели
 
-Для обучения используйте:
+Процесс нашего обучения и тестирования: DepresURFU.ipynb (https://github.com/Madic228/SoulTextRSVPU/blob/main/DepresURFU.ipynb)
+
+Если захотите обучить сами, используйте:
 
 ```sh
 python server/depres_model/train_model.py
