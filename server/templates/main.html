@@ -9,18 +9,22 @@
 <body class="main-page">
     <div class="container">
         <h2>Вставьте текст или перетащите файл</h2>
-        <textarea id="inputText" placeholder="Введите текст..." rows="6"></textarea>
-        <input type="file" id="fileInput" accept=".txt">
+        <textarea id="inputText" placeholder="  Введите текст..." rows="6"></textarea>
+        <label for="fileInput" class="custom-file-label">Выбрать файл</label>
+        <input type="file" id="fileInput" accept=".txt,.doc,.docx,.rtf,.odt,.pdf" style="display:none;">
+        <button class="button-clear-file" id="clearFileBtn" type="button">
+            <img src="{{ url_for('static', filename='cross-small-svgrepo-com.svg') }}" alt="Отменить выбор" style="width:18px;height:18px;vertical-align:middle;">
+        </button>
         <h3>Распознанный текст:</h3>
         <div id="recognizedText" class="scroll-box"></div>
-        <button id="analyzeBtn">Определить степень депрессивности</button>
+        <button class="button-predict" id="analyzeBtn">Определить степень депрессивности</button>
     </div>
 
     <div id="modal" class="modal">
         <div class="modal-content">
             <span id="closeModal" class="close">&times;</span>
             <p id="verdictText"></p>
-            <button id="okBtn">OK</button>
+            <button class="button-ok" id="okBtn">OK</button>
         </div>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>

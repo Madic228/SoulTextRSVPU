@@ -14,19 +14,61 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Загрузка текста из файла
-    fileInput.addEventListener('change', function (e) {
+    fileInput.addEventListener('change', async function(e) {
         const file = e.target.files[0];
-        if (file && file.type === "text/plain") {
-            const reader = new FileReader();
-            reader.onload = function (evt) {
-                inputText.value = evt.target.result;
-                recognizedText.textContent = evt.target.result;
-            };
-            reader.readAsText(file, 'UTF-8');
+        if (!file) return;
+
+        const ext = file.name.split('.').pop().toLowerCase();
+        if (ext === "txt") {
+            const text = await file.text();
+            cleanAndShowText(text);
+        } else if (["doc", "docx", "pdf"].includes(ext)) {
+            const formData = new FormData();
+            formData.append('file', file);
+            fetch('/extract_text', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.text) {
+                    cleanAndShowText(data.text);
+                } else {
+                    recognizedText.innerText = data.error || "Ошибка при извлечении текста.";
+                }
+            });
         } else {
-            alert('Пожалуйста, выберите текстовый файл (.txt)');
+            recognizedText.innerText = "Неподдерживаемый тип файла.";
         }
     });
+
+    document.getElementById('fileInput').addEventListener('change', function() {
+        const label = document.querySelector('.custom-file-label');
+        if (this.files.length > 0) {
+            label.textContent = this.files[0].name;
+        } else {
+            label.textContent = 'Выбрать файл';
+        }
+    });
+
+    document.getElementById('clearFileBtn').addEventListener('click', function() {
+        document.getElementById('fileInput').value = "";
+        document.querySelector('.custom-file-label').textContent = 'Выбрать файл';
+        recognizedText.innerText = "";
+    });
+
+    // Функция для отправки текста на сервер для очистки и отображения
+    function cleanAndShowText(text) {
+        fetch('/clean_text', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({text})
+        })
+        .then(res => res.json())
+        .then(data => {
+            recognizedText.innerText = data.cleaned_text;
+        });
+    }
 
     // Анализ текста
     analyzeBtn.addEventListener('click', function () {
