@@ -1,0 +1,8 @@
+
+vpython:S1172;"2Remove the unused function parameter "max_length".(Ãÿç8†ÅÙŠè2J$5695b5fa-8fa6-4965-92a1-62bd443f63d3
+¡python:S117X"XRename this local variable "X_train" to match the regular expression ^[_a-z][a-z0-9_]*$.(ªûĞÿÿÿÿÿ8‡ÅÙŠè2J$f0f6d7f6-7be7-4110-a619-14a68450d9ba
+¢python:S117o"_Rename this local variable "X_train_padded" to match the regular expression ^[_a-z][a-z0-9_]*$.(•Êä}8‡ÅÙŠè2J$a93e92ad-06ce-4f15-b285-2cc445b6658b
+ python:S117j"\Rename this local variable "X_train_seq" to match the regular expression ^[_a-z][a-z0-9_]*$.(³¼ÔÓ8‡ÅÙŠè2J$ca01f8a1-1bc9-4c40-b861-9098fec68d3c
+Ÿpython:S117X"VRename this local variable "X_val" to match the regular expression ^[_a-z][a-z0-9_]*$.(ªûĞÿÿÿÿÿ8‡ÅÙŠè2J$cb9f49dd-0b33-4322-a00a-e17bbdae8635
+¡python:S117p"]Rename this local variable "X_val_padded" to match the regular expression ^[_a-z][a-z0-9_]*$.(¿Ì¿8‡ÅÙŠè2J$fd1462cf-b1ef-41a8-9e74-ec2afe6ce835
+£python:S117k"ZRename this local variable "X_val_seq" to match the regular expression ^[_a-z][a-z0-9_]*$.(ô»Á«şÿÿÿÿ8‡ÅÙŠè2J$45c05ffa-b255-403b-8913-07dc1875ae54
