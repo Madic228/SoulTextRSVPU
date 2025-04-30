@@ -134,7 +134,7 @@ server/
 
 ## Обучение модели
 
-Процесс нашего обучения и тестирования: DepresURFU.ipynb (https://github.com/Madic228/SoulTextRSVPU/blob/main/DepresURFU.ipynb)
+Процесс нашего обучения и тестирования: DepresURFU.ipynb (https://github.com/Madic228/SoulTextRSVPU/blob/master/DepresURFU.ipynb)
 
 Если захотите обучить сами, используйте:
 
