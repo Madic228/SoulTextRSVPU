@@ -62,30 +62,6 @@ python server/app.py
 
 ---
 
-## Быстрый старт через Docker
-
-### 1. Соберите Docker-образ
-
-```sh
-docker build -t soultextrsvpu .
-```
-
-### 2. Запустите контейнер
-
-```sh
-docker run -p 5000:5000 soultextrsvpu
-```
-
-### 3. Откройте сайт
-
-Перейдите в браузере по адресу: [http://localhost:5000](http://localhost:5000)
-
----
-
-**Примечание:**  
-Перед сборкой Docker-образа убедитесь, что в проекте есть файл `requirements.txt` и все необходимые веса/токенизатор в папке `server/depres_model/`.
-
----
 
 ## Структура проекта
 
